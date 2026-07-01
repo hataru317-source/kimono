@@ -63,8 +63,8 @@ h1{
     min-width:180px;
 }
 
-convert-text{
-       mdrgin-top:6px;
+.convert-text{
+       margin-top:6px;
        color:#666;
        font-size:14px;
 }
@@ -211,14 +211,7 @@ placeholder="背からの身丈→ 160  または  4尺2寸"
 id="backMitakeConvert"
 class="convert-text"
 >
--
-</div>
-    
-<div
-id="backMitakeConvert"
-class="convert"
-></div>
-
+約4尺2寸8分
 </div>
 
 <div class="input-group">
@@ -242,7 +235,7 @@ class="convert-text"
 </div>
 
 <div
-id="kurikoshiConbert"
+id="kurikoshiConvert"
 class="convert"
 ></div>
 
@@ -266,7 +259,7 @@ placeholder="袖丈→  49  または  1尺3寸"
 >
 
 <div
-id="sodeTakeConbert"
+id="sodeTakeConvert"
 class="convert"
 ></div>
 
@@ -286,7 +279,7 @@ placeholder="反物長さ→  12.70  または  3丈3尺5寸"
 >
 
 <div
-id="tanmonoLenghtConvert"
+id="tanmonoLengthConvert"
 class="convert"
 ></div>
 
@@ -852,21 +845,21 @@ function showResult(result){
 function judgeTanmono(){
 
     const backMitake =
-        parseLenght(
+        parseLength(
             document.getElementById(
                 "backMitake"
             ).value
         );
 
     const kurikoshi =
-        Number(
+        parseLength(
             document.getElementById(
                 "kurikoshi"
             ).value
         );
 
     const sodeTake =
-        Number(
+        parseLength(
             document.getElementById(
                 "sodeTake"
             ).value
