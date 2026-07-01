@@ -395,6 +395,26 @@ function shakkanToCm(text){
     );
 }
 
+function parseLength(text){
+
+    text = text.trim();
+
+    if(
+        text.includes("尺")
+        ||
+        text.includes("寸")
+        ||
+        text.includes("分")
+    ){
+
+        return shakkanToCm(text);
+
+    }
+
+    return Number(text);
+
+}
+
 const OKUMI_SAGARI = 23;
 const ERIKATAAKI = 9;
 
@@ -832,7 +852,7 @@ function showResult(result){
 function judgeTanmono(){
 
     const backMitake =
-        Number(
+        parseLenght(
             document.getElementById(
                 "backMitake"
             ).value
