@@ -63,6 +63,12 @@ h1{
     min-width:180px;
 }
 
+convert-text{
+       mdrgin-top:6px;
+       color:#666;
+       font-size:14px;
+}
+    
 .convert{
     margin-top:6px;
     font-size:0.88em;
@@ -203,6 +209,13 @@ placeholder="背からの身丈→ 160  または  4尺2寸"
 
 <div
 id="backMitakeConvert"
+class="convert-text"
+>
+-
+</div>
+    
+<div
+id="backMitakeConvert"
 class="convert"
 ></div>
 
@@ -220,6 +233,13 @@ id="kurikoshi"
 value="3"
 placeholder="繰越→  3  または  8分"
 >
+
+<div
+id="kurikoshiConvert"
+class="convert-text"
+>
+-
+</div>
 
 <div
 id="kurikoshiConbert"
@@ -318,6 +338,62 @@ class="card result"
 /* ==========================================
    固定値
 ========================================== */
+
+/*=============================
+尺貫法変換
+=============================*/
+
+function cmToShakkan(cm){
+
+    const sun = cm / 3.03;
+
+    const shaku = Math.floor(sun / 10);
+
+    const sunPart = Math.floor(sun % 10);
+
+    const bu =
+        Math.round(
+            (sun - Math.floor(sun))
+            *10
+        );
+
+    return `${shaku}尺${sunPart}寸${bu}分`;
+}
+
+function shakkanToCm(text){
+
+    text = text.replace(/\s/g,"");
+
+    let shaku = 0;
+    let sun = 0;
+    let bu = 0;
+
+    const a =
+        text.match(/([0-9.]+)尺/);
+
+    if(a)
+        shaku = Number(a[1]);
+
+    const b =
+        text.match(/([0-9.]+)寸/);
+
+    if(b)
+        sun = Number(b[1]);
+
+    const c =
+        text.match(/([0-9.]+)分/);
+
+    if(c)
+        bu = Number(c[1]);
+
+    return (
+        shaku*30.3
+        +
+        sun*3.03
+        +
+        bu*0.303
+    );
+}
 
 const OKUMI_SAGARI = 23;
 const ERIKATAAKI = 9;
