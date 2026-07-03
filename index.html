@@ -214,7 +214,7 @@ class="convert-text"
 約4尺2寸8分
 </div>
 
-</div
+</div>
 
 <div class="input-group">
 
@@ -333,7 +333,7 @@ class="card result"
 
 /* 鯨尺　*/
 const KUJIRA_SHAKU = 37.8787878;
-const KUJIRA_SNS = KUJIRA_SHAKU / 10;
+const KUJIRA_SUN = KUJIRA_SHAKU / 10;
 const KUJIRA_BU = KUJIRA_SHAKU / 100;
 const KUJIRA_JOU = KUJIRA_SHAKU * 10;
 
@@ -347,15 +347,15 @@ const ERIKATAAKI = 9;
 
 function cmToShakkan(cm){
 
-    const totalBU = cm / KUJIRA_BU;
+    const totalBu = cm / KUJIRA_BU;
 
-    const shaku = Math.floor(totalBU / 100);
+    const shaku = Math.floor(totalBu / 100);
 
-    const sun = Math.floor(totalBU % 100);
+    const sun = Math.floor((totalBu % 100) / 10;
 
-    const bu =Math.round(totalBU % 10);
+    const bu =Math.round(totalBu % 10);
 
-    return `${shaku}尺${sunPart}寸${bu}分`;
+    return `${shaku}尺${sun}寸${bu}分`;
 }
 
 function shakkanToCm(text){
