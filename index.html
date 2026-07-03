@@ -331,23 +331,29 @@ class="card result"
    固定値
 ========================================== */
 
+/* 鯨尺　*/
+const KUJIRA_SHAKU = 37.8787878;
+const KUJIRA_SNS = KUJIRA_SHAKU / 10;
+const KUJIRA_BU = KUJIRA_SHAKU / 100;
+const KUJIRA_JOU = KUJIRA_SHAKU * 10;
+
+/* 裁断 */
+const OKUMI_SAGARI = 23;
+const ERIKATAAKI = 9;
+
 /*=============================
 尺貫法変換
 =============================*/
 
 function cmToShakkan(cm){
 
-    const sun = cm / 3.03;
+    const totalBU = cm / KUJIRA_BU;
 
-    const shaku = Math.floor(sun / 10);
+    const shaku = Math.floor(totalBU / 100);
 
-    const sunPart = Math.floor(sun % 10);
+    const sun = Math.floor(totalBU % 100);
 
-    const bu =
-        Math.round(
-            (sun - Math.floor(sun))
-            *10
-        );
+    const bu =Math.round(totalBU % 10);
 
     return `${shaku}尺${sunPart}寸${bu}分`;
 }
@@ -378,12 +384,12 @@ function shakkanToCm(text){
     if(c)
         bu = Number(c[1]);
 
-    return (
-        shaku*30.3
+   return (
+        shaku * KUJIRA_SHAKU
         +
-        sun*3.03
+        sun * KUJIRA_SUN
         +
-        bu*0.303
+        bu * KUJIRA_BU
     );
 }
 
@@ -407,8 +413,6 @@ function parseLength(text){
 
 }
 
-const OKUMI_SAGARI = 23;
-const ERIKATAAKI = 9;
 
 /* ==========================================
    自動褄下
