@@ -439,8 +439,23 @@ function updateConvert(idInput, idConvert){
         return;
     }
 
-    document.getElementById(idConvert).textContent =
-        "約　" + cmToShakkan(cm);
+    if(
+        value.includes("尺")
+        ||
+        value.includes("寸")
+        ||
+        value.includes("分")
+    ){
+
+        document.getElementById(idConvert).textcontent =
+            "約" + cm.toFixed(1) + " cm";
+
+    }eles{
+        
+         document.getElementById(idConvert).textContent =
+             "約" + cmToShakkan(cm);
+
+    }
 
 }
 
