@@ -968,6 +968,7 @@ document
 updateConvert("backMitake","backMitakeConvert");
 updateConvert("kurikoshi","kurikoshiConvert");
 updateConvert("sodeTake","sodeTakeConvert");
+updateConvert("tanmonoLength","tanmonoLangthConvert");
 
 document.getElementById("backMitake").addEventListener("input",function(){
 
@@ -992,6 +993,15 @@ document.getElementById("sodeTake").addEventListener("input",function(){
     updateConvert(
         "sodeTake",
         "sodeTakeConvert"
+    );
+
+});
+
+document.getElementById("tanmonoLangth").addEventListener("input",function(){
+
+    updateConvert(
+        "tanmonoLangth",
+        "tanmonoLangthConvert"
     );
 
 });
