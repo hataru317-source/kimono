@@ -415,6 +415,34 @@ function parseLength(text){
 
 }
 
+/*=============================
+  cm → 鯨尺表示
+=============================*/
+
+function updateConvert(idInput, idConvert){
+    const value =
+        document.getElementById(idInput).value.trim();
+
+    if(value===""){
+
+        document.getElementById(idConvert).textContent="";
+
+        return;
+    }
+
+    const cm = parseLength(value);
+
+    if(isNaN(cm)){
+
+        document.getElementById(idConvert).textContent="";
+
+        return;
+    }
+
+    document.getElementById(idConvert).textContent =
+        "約　" + cmToShakkan(cm);
+
+}
 
 /* ==========================================
    自動褄下
@@ -921,6 +949,37 @@ document
     "click",
     judgeTanmono
 );
+
+updateConvert("backMitake","backMitakeConvert");
+updateConvert("kurikoshi","kurikoshiConvert");
+updateConvert("sodeTake","sodeTakeConvert");
+
+document.getElementById("backMitake").addEventListener("input",function(){
+
+    updateConvert(
+        "backMitake",
+        "backMitakeConvert"
+    );
+
+});
+
+document.getElementById("kurikoshi").addEventListener("input",function(){
+
+    updateConvert(
+        "kurikoshi",
+        "kurikoshiConvert"
+    );
+
+});
+
+document.getElementById("sodeTake").addEventListener("input",function(){
+
+    updateConvert(
+        "sodeTake",
+        "sodeTakeConvert"
+    );
+
+});
 
 </script>
 
