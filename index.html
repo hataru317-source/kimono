@@ -819,8 +819,6 @@ function showResult(result){
 
          if(result.possible){
 
-        <td>${tanmonoMeter.toFixed(2)} m</td>
-
         const requiredMeter =
             (
                 result.requiredCm / 100
@@ -862,7 +860,7 @@ function showResult(result){
 
         <tr>
         <th>反物長さ</th>
-        <td>${tanmonoMeter} m</td>
+        <td>${tanmonoMeter.toFixed(2)} m</td>
         </tr>
 
         <tr>
