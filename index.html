@@ -794,16 +794,9 @@ function showResult(result){
             "resultArea"
         );
 
-    if(result.possible){
-        
-        const tanmonoText =
-            document.getElementById(
-                "tanmonoLength"
-            ).value.trim();
+    let tanmonoMeter;
 
-        let tanmonoMeter;
-
-        if(
+     if(
             tanmonoText.includes("丈")
             ||
             tanmonoText.includes("尺")
@@ -815,6 +808,13 @@ function showResult(result){
 
             tanmonoMeter =
                 shakkanToCm(tanmonoText) / 100;
+
+    if(result.possible){
+        
+        const tanmonoText =
+            document.getElementById(
+                "tanmonoLength"
+            ).value.trim();
 
         }else{
 
