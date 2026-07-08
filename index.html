@@ -790,9 +790,10 @@ function searchMaxNaiage(
 function showResult(result){
 
     const resultArea =
-        document.getElementById(
-            "resultArea"
-        );
+        document.getElementById("resultArea");
+
+    const tanmonoText =
+        document.getElementById("tanmonoLangth").value.trim();
 
     let tanmonoMeter;
 
@@ -808,8 +809,6 @@ function showResult(result){
 
             tanmonoMeter =
                 shakkanToCm(tanmonoText) / 100;
-
-    if(result.possible){
         
         const tanmonoText =
             document.getElementById(
@@ -822,6 +821,8 @@ function showResult(result){
                 Number(tanmonoText);
 
         }
+
+         if(result.possible){
 
         tanmonoMeter = tanmonoMeter.toFixed(2);
 
