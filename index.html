@@ -409,7 +409,7 @@ function parseLength(text){
     text = text.trim();
 
     if(
-        text.includes(丈")
+        text.includes("丈")
         ||
         text.includes("尺")
         ||
@@ -794,8 +794,6 @@ function showResult(result){
             "resultArea"
         );
 
-    if(result.possible){
-
         const tanmonoText =
             document.getElementById(
                 "tanmonoLength"
@@ -804,13 +802,13 @@ function showResult(result){
         let tanmonoMeter;
 
         if(
-            tanmonoText.inculudes("丈")
+            tanmonoText.includes("丈")
             ||
-            tanmonoText.inculudes("尺")
+            tanmonoText.includes("尺")
             ||
-            tanmonoText.inculudes("寸")
+            tanmonoText.includes("寸")
             ||
-            tanmonoText.inculudes("分")
+            tanmonoText.includes("分")
         ){
 
             tanmonoMeter =
@@ -948,17 +946,17 @@ function judgeTanmono(){
     let tanmonoLengthMeter;
 
     if(
-        tanmonoText.inculudes("丈")
+        tanmonoText.includes("丈")
         ||
         tanmonoText.includes("尺")
         ||
-        tanmonoText.inculudes("寸")
+        tanmonoText.includes("寸")
         ||
         tanmonoText.includes("分")
     ){
 
         tanmonoLengthMeter =
-            shakkannToCm(tanmonoText) / 100;
+            shakkanToCm(tanmonoText) / 100;
 
     }else{
 
