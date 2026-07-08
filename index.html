@@ -364,9 +364,16 @@ function shakkanToCm(text){
 
     text = text.replace(/\s/g,"");
 
+    let jou = 0;
     let shaku = 0;
     let sun = 0;
     let bu = 0;
+
+    const j =
+        text.match(/([0-9.]+)丈/);
+
+    if(j)
+        jou = Number(j[1]);
 
     const a =
         text.match(/([0-9.]+)尺/);
@@ -387,11 +394,13 @@ function shakkanToCm(text){
         bu = Number(c[1]);
 
    return (
-        shaku * KUJIRA_SHAKU
-        +
-        sun * KUJIRA_SUN
-        +
-        bu * KUJIRA_BU
+       jou * KUJIRA_JOU
+       +
+       shaku * KUJIRA_SHAKU
+       +
+       sun * KUJIRA_SUN
+       +
+       bu * KUJIRA_BU
     );
 }
 
@@ -400,6 +409,8 @@ function parseLength(text){
     text = text.trim();
 
     if(
+        text.includes(丈")
+        ||
         text.includes("尺")
         ||
         text.includes("寸")
@@ -440,6 +451,8 @@ function updateConvert(idInput, idConvert){
     }
 
     if(
+        value.includes("丈")
+        ||
         value.includes("尺")
         ||
         value.includes("寸")
@@ -783,14 +796,34 @@ function showResult(result){
 
     if(result.possible){
 
-        const tanmonoMeter =
-            (
-                Number(
-                    document.getElementById(
-                        "tanmonoLength"
-                    ).value
-                )
-            ).toFixed(2);
+        const tanmonoText =
+            document.getElementById(
+                "tanmonoLength"
+            ).value.trim();
+
+        let tanmonoMeter;
+
+        if(
+            tanmonoText.inculudes("丈")
+            ||
+            tanmonoText.inculudes("尺")
+            ||
+            tanmonoText.inculudes("寸")
+            ||
+            tanmonoText.inculudes("分")
+        ){
+
+            tanmonoMeter =
+                shakkanToCm(tanmonoText) / 100;
+
+        }else{
+
+            tanmonoMeter =
+                Number(tanmonoText);
+
+        }
+
+        tanmonoMeter = tanmonoMeter.toFixed(2);
 
         const requiredMeter =
             (
@@ -913,12 +946,32 @@ function judgeTanmono(){
             ).value
         );
 
-    const tanmonoLengthMeter =
-        Number(
-            document.getElementById(
-                "tanmonoLength"
-            ).value
-        );
+    const tanmonoText =
+        document.getElementById(
+            "tanmonoLength"
+            ).value.trim();
+
+    let tanmonoLengthMeter;
+
+    if(
+        tanmonoText.inculudes("丈")
+        ||
+        tanmonoText.includes("尺")
+        ||
+        tanmonoText.inculudes("寸")
+        ||
+        tanmonoText.includes("分")
+    ){
+
+        tanmonoLengthMeter =
+            shakkannToCm(tanmonoText) / 100;
+
+    }else{
+
+        tanmonoLengthMeter =
+            Number(tanmonoText);
+
+    }
 
     if(
         backMitake <= 0
