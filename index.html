@@ -274,7 +274,7 @@ class="convert-text"
 type="text"
 id="tanmonoLength"
 value="12.70"
-placeholder="反物長さ→  12.70  または  3丈3尺5寸"
+placeholder="反物長さ→  12.70(m)  または  3丈3尺5寸"
 >
 
 <div
@@ -347,15 +347,13 @@ const ERIKATAAKI = 9;
 
 function cmToShakkan(cm){
 
-    const totalBu = cm / KUJIRA_BU;
+    let totalBU = Math.round(cm / KUJIRA_BU);
 
     const shaku = Math.floor(totalBu / 100);
+    totalBu %= 100;
 
-    const sun = Math.floor((totalBu % 100) / 10);
-
-
-
-    const bu =Math.round(totalBu % 10);
+    const sun = Math.floor(totalBu / 10);
+    const bu = totalBu % 10;
 
     return `${shaku}尺${sun}寸${bu}分`;
 }
