@@ -350,10 +350,10 @@ function cmToShakkan(cm){
     let totalBu = Math.round(cm / KUJIRA_BU);
 
     const shaku = Math.floor(totalBu / 100);
-    totalBu %= 100;
+    totalBu -= shaku * 100;
 
     const sun = Math.floor(totalBu / 10);
-    const bu = totalBu % 10;
+    const bu = totalBu - sun * 10;
 
     return `${shaku}尺${sun}寸${bu}分`;
 }
