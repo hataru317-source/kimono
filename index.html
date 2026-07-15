@@ -504,11 +504,11 @@ function getKakeeriTake(backMitake){
 
 function getSodeNuiro(naiage){
 
-    if(naiage >= 10){
+    if(uchiage >= 10){
         return 6;
     }
 
-    if(naiage >= 5){
+    if(uchiage >= 5){
         return 4;
     }
 
@@ -557,14 +557,14 @@ function getEritake(
 function getMigoroLength(
     shoulderMitake,
     kurikoshi,
-    naiage
+    uchiage
 ){
 
     return (
         shoulderMitake
         + kurikoshi
         + 2
-        + naiage
+        + uchiage
     ) * 2;
 }
 
@@ -589,10 +589,10 @@ function getOkumiLength(
 
 function getHoneriLength(
     eritake,
-    naiage
+    uchiage
 ){
 
-    if(naiage === 0){
+    if(uchiage === 0){
 
         return (
             eritake + 3
@@ -602,7 +602,7 @@ function getHoneriLength(
     return (
         eritake
         + 2
-        + naiage
+        + uchiage
     ) * 2;
 }
 
@@ -625,12 +625,12 @@ function getKakeeriLength(
 
 function getSodeLength(
     sodeTake,
-    naiage
+    uchiage
 ){
 
     return (
         sodeTake
-        + getSodeNuiro(naiage)
+        + getSodeNuiro(uchiage)
     ) * 2;
 }
 
@@ -642,7 +642,7 @@ function calcRequiredLength(
     backMitake,
     kurikoshi,
     sodeTake,
-    naiage
+    uchiage
 ){
 
     const shoulderMitake =
@@ -665,7 +665,7 @@ function calcRequiredLength(
         getMigoroLength(
             shoulderMitake,
             kurikoshi,
-            naiage
+            uchiage
         );
 
     const okumi =
@@ -683,7 +683,7 @@ function calcRequiredLength(
     const honeri =
         getHoneriLength(
             eritake,
-            naiage
+            uchiage
         );
 
     const kakeeri =
@@ -694,7 +694,7 @@ function calcRequiredLength(
     const sode =
         getSodeLength(
             sodeTake,
-            naiage
+            uchiage
         );
 
     const bodyPart =
@@ -725,7 +725,7 @@ function calcRequiredLength(
    最大内揚げ探索
 ========================================== */
 
-function searchMaxNaiage(
+function searchMaxUchiage(
     backMitake,
     kurikoshi,
     sodeTake,
@@ -733,14 +733,14 @@ function searchMaxNaiage(
 ){
 
     for(
-        let naiage = 15.0;
-        naiage >= 0;
-        naiage -= 0.1
+        let uchiage = 15.0;
+        uchiage >= 0;
+        uchiage -= 0.1
     ){
 
         const n =
             Math.round(
-                naiage * 10
+                nuchige * 10
             ) / 10;
 
         const result =
@@ -761,7 +761,7 @@ function searchMaxNaiage(
 
                 possible:true,
 
-                naiage:n,
+                uchiage:n,
 
                 ...result
             };
@@ -848,7 +848,7 @@ function showResult(result){
 
         <tr>
         <th>最大内揚げ</th>
-        <td>${result.naiage.toFixed(1)} cm</td>
+        <td>${result.uchiage.toFixed(1)} cm</td>
         </tr>
 
         <tr>
@@ -979,7 +979,7 @@ function judgeTanmono(){
         * 100;
 
     const result =
-        searchMaxNaiage(
+        searchMaxUchiage(
             backMitake,
             kurikoshi,
             sodeTake,
